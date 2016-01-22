@@ -1,0 +1,58 @@
+{
+	"id": "4e3a8534-89dd-cf9b-bc87-251fa1306cd6",
+	"name": "Netconf Mount Custom Schema Cache Directory",
+	"description": "This collection of REST commands demonstrates how to do CDS and CSS style mounts for netconf devices using the netconf-testtool.\n\nThe basic environment set includes:\n1) Start karaf\n> bin/karaf\n\n2) Install the following:\nkaraf> feature:install odl-netconf-all odl-netconf-connector-ssh odl-netconf-topology odl-restconf\n\n3) Set up the netconf-testtool in a separate terminal:\n> cd opendaylight/netconf/tools/netconf-testtool/target/\n> java -jar netconf-testtool-1.0.0-SNAPSHOT-executable.jar --device-count=1\n\nYou an then run the examples and see how the code works in action.  One way\nto do this is to look at each request, figure out if it is using a\ncustom schema cache directory (i.e., has a schema-cache-directory element),\nrun the request by pressing \"Send\", then doing checking the cache for\nwhere the yang sources reside.\n\nTo prove to yourself it is working, run\nls ${KARAF_HOME}/cache\nBy default, only the \"schema\" directory should exist.\n\nThen after running a request, ensure the folder appears and that\nyang files start appearing momentarily.  Please note, if you do\nnot have connectivity to the device, the folder will be created\nbut the sources will not appear!",
+	"order": [
+		"235f51ec-c523-5d93-9d66-9f92a809d5c4",
+		"af22b97f-9ec0-e988-b41c-4c47620f516e"
+	],
+	"folders": [],
+	"timestamp": 1453503623900,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "235f51ec-c523-5d93-9d66-9f92a809d5c4",
+			"headers": "Authorization: Basic YWRtaW46YWRtaW4=\nAccept: application/xml\nContent-Type: application/xml\n",
+			"url": "http://localhost:8181/restconf/config/network-topology:network-topology/topology/topology-netconf/node/controller-config/yang-ext:mount/config:modules",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "4e3a8534-89dd-cf9b-bc87-251fa1306cd6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "netconf-testtool CSS- mounted to custom_directory_1",
+			"description": "Mount netconf-testtool via config subsystem mechanism w/ cache directory cache/custom_directory_1.",
+			"descriptionFormat": "html",
+			"time": 1453504671047,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "<module xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:config\">\n  <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">prefix:sal-netconf-connector</type>\n  <name>netconf-testtool-custom-directory</name>\n  <address xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">127.0.0.1</address>\n  <port xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">17830</port>\n  <username xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">admin</username>\n  <password xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">admin</password>\n  <tcp-only xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">false</tcp-only>\n  <schema-cache-directory xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">custom_directory_1</schema-cache-directory>\n  <event-executor xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:netty\">prefix:netty-event-executor</type>\n    <name>global-event-executor</name>\n  </event-executor>\n  <binding-registry xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:binding\">prefix:binding-broker-osgi-registry</type>\n    <name>binding-osgi-broker</name>\n  </binding-registry>\n  <dom-registry xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:dom\">prefix:dom-broker-osgi-registry</type>\n    <name>dom-broker</name>\n  </dom-registry>\n  <client-dispatcher xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:config:netconf\">prefix:netconf-client-dispatcher</type>\n    <name>global-netconf-dispatcher</name>\n  </client-dispatcher>\n  <processing-executor xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:threadpool\">prefix:threadpool</type>\n    <name>global-netconf-processing-executor</name>\n  </processing-executor>\n  <keepalive-executor xmlns=\"urn:opendaylight:params:xml:ns:yang:controller:md:sal:connector:netconf\">\n    <type xmlns:prefix=\"urn:opendaylight:params:xml:ns:yang:controller:threadpool\">prefix:scheduled-threadpool</type>\n    <name>global-netconf-ssh-scheduled-executor</name>\n  </keepalive-executor>\n</module>"
+		},
+		{
+			"id": "af22b97f-9ec0-e988-b41c-4c47620f516e",
+			"headers": "Authorization: Basic YWRtaW46YWRtaW4=\nAccept: application/xml\nContent-Type: application/xml\n",
+			"url": "http://localhost:8181/restconf/config/network-topology:network-topology/topology/topology-netconf/node/netconf-mounted-through-topology-configuration",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "4e3a8534-89dd-cf9b-bc87-251fa1306cd6",
+			"data": [],
+			"dataMode": "raw",
+			"name": "netconf-testtool CDS-mounted to custom directory",
+			"description": "Mounts netconf-testtool through CDS mechanism w/ schema cache directory cache/custom_directory_2",
+			"descriptionFormat": "html",
+			"time": 1453504957390,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "<node xmlns=\"urn:TBD:params:xml:ns:yang:network-topology\">\n   <node-id>netconf-mounted-through-topology-configuration</node-id>\n   <host xmlns=\"urn:opendaylight:netconf-node-topology\">127.0.0.1</host>\n   <port xmlns=\"urn:opendaylight:netconf-node-topology\">17830</port>\n   <username xmlns=\"urn:opendaylight:netconf-node-topology\">admin</username>\n   <password xmlns=\"urn:opendaylight:netconf-node-topology\">admin</password>\n   <tcp-only xmlns=\"urn:opendaylight:netconf-node-topology\">false</tcp-only>\n   <keepalive-delay xmlns=\"urn:opendaylight:netconf-node-topology\">0</keepalive-delay>\n   <schema-cache-directory xmlns=\"urn:opendaylight:netconf-node-topology\">custom_directory_2</schema-cache-directory>\n</node>"
+		}
+	]
+}
